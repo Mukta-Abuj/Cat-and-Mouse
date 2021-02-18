@@ -34,6 +34,11 @@ function draw() {
 
     background(0);
     //Write condition here to evalute if tom and jerry collide
+    if (tom.isTouching(mouse)) {
+        mouse.addImage(mouse4Img);
+        tom.addImage(cat4Img);
+        tom.velocityX = 0;
+    }
     keyPressed();
     drawSprites();
 }
@@ -42,10 +47,10 @@ function draw() {
 function keyPressed(){
   //For moving and changing animation write code here
   if(keyCode === LEFT_ARROW) {
-      tom.velocityX = -1;
       tom.addAnimation("tomRunning", catAImg);
       tom.changeAnimation("tomRunning");
       mouse.addAnimation("mouseAnimation", mouseAImg);
-      mouse.changeAnimation("mouseAnimation")
+      mouse.changeAnimation("mouseAnimation");
+      tom.velocityX = -1;
   }
 }
